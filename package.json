@@ -1,0 +1,27 @@
+{
+  "name": "bun-backend-hello-world",
+  "module": "src/server.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun dist/server.js",
+    "dev": "bun --watch src/server.ts",
+    "build": "tsc",
+    "postinstall": "bun build src/server.ts --target node --outfile dist/server.js"
+  },
+  "devDependencies": {
+    "@claudiobzrr/eslint-config": "^1.1.1",
+    "@types/bun": "latest",
+    "@types/module-alias": "^2.0.4",
+    "prisma": "^5.12.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.12.0",
+    "dotenv": "^16.4.5",
+    "elysia": "^1.0.11",
+    "eslint": "^8.57.0",
+    "module-alias": "^2.2.3"
+  }
+}
