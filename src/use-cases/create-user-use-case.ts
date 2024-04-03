@@ -2,7 +2,7 @@ import type { ICreateUserPayload } from '@/entities/User';
 import type { PasswordRepository } from '@repositories/password-repository';
 import type { UserRepository } from '@repositories/user-repository';
 
-export class CreateUser {
+export class CreateUserUseCase {
   constructor(
     private userRepository: UserRepository,
     private passwordRepository: PasswordRepository,
