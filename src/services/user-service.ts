@@ -36,10 +36,11 @@ userService.put(
   '/user/:id',
   async ({ body, params, set }) => {
     try {
-      return await userController.update({
+      await userController.update({
         data: body,
         filter: { id: params.id },
       });
+      return 'Usuário atualizado com sucesso';
     } catch (err) {
       set.status = 404;
       return 'Erro ao atualizar usuário';
@@ -62,6 +63,7 @@ userService.delete(
   async ({ params, set }) => {
     try {
       await userController.delete({ id: params.id });
+      return 'Usuário deletado com sucesso';
     } catch (err) {
       set.status = 404;
       return 'Erro ao deletar usuário';
