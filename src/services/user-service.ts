@@ -17,17 +17,59 @@ userService.post(
   {
     body: t.Object({
       email: t.String({ format: 'email', error: 'Email inválido' }),
-      name: t.String(),
-      password: t.String(),
+      name: t.String({ error: 'É necessário informar um nome' }),
+      password: t.String({ error: 'É necessário informar uma senha' }),
     }),
   },
 );
 
 userService.get('/users', async ({ set }) => {
   try {
-    await userController.findAll();
+    return await userController.findAll();
   } catch (err) {
     set.status = 404;
     return 'Erro ao buscar usuários';
   }
 });
+
+userService.put(
+  '/user/:id',
+  async ({ body, params, set }) => {
+    try {
+      return await userController.update({
+        data: body,
+        filter: { id: params.id },
+      });
+    } catch (err) {
+      set.status = 404;
+      return 'Erro ao atualizar usuário';
+    }
+  },
+  {
+    body: t.Object({
+      email: t.String({ format: 'email', error: 'Email inválido' }),
+      name: t.String({ error: 'É necessário informar um nome' }),
+      password: t.String({ error: 'É necessário informar uma senha' }),
+    }),
+    params: t.Object({
+      id: t.String({ error: 'Id inválido' }),
+    }),
+  },
+);
+
+userService.delete(
+  '/user/:id',
+  async ({ params, set }) => {
+    try {
+      await userController.delete({ id: params.id });
+    } catch (err) {
+      set.status = 404;
+      return 'Erro ao deletar usuário';
+    }
+  },
+  {
+    params: t.Object({
+      id: t.String({ error: 'Id inválido' }),
+    }),
+  },
+);
