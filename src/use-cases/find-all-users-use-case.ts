@@ -1,4 +1,4 @@
-import type { UserRepository } from '@repositories/user-repository';
+import type { UserRepository } from '@/repositories/user-repository';
 
 export class FindAllUsersUseCase {
   constructor(private userRepository: UserRepository) {}

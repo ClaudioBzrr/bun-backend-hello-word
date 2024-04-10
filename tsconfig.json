@@ -28,9 +28,6 @@
     "baseUrl": "./src",
     "paths": {
       "@/*": ["./*"],
-      "@entities/*": ["./entities/*"],
-      "@repositories/*": ["./repositories/*"],
-      "@use-cases/*": ["./use-cases/*"],
     }
   }
 }
